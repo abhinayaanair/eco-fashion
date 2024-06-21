@@ -1,0 +1,80 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+  .item-details {
+    border: 2px solid red;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .remove-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+  }
+
+  .remove-btn:hover {
+    background-color: #ff6b6b !important;
+  }
+</style>
+
+<div class="container mt-5">
+  <h1>Shopping Cart</h1>
+
+  <ul class="cart-items">
+    <% if (cartItems && cartItems.length > 0) { %>
+      <% cartItems.forEach(item => { %>
+        <li class="cart-item">
+          <div class="item-img">
+            <img src="<%= item.image.url %>" class="img-fluid" alt="<%= item.title %>">
+          </div>
+          <div class="item-details">
+            <div>
+              <h5><%= item.title %></h5>
+              <p>Price: &#8377; <%= item.price.toLocaleString("en-IN") %></p>
+            </div>
+            <form method="POST" action="/cart/remove/<%= item._id %>?_method=DELETE">
+              <button type="submit" class="btn btn-danger remove-btn">Remove</button>
+            </form>
+          </div>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <p>Your cart is empty.</p>
+    <% } %>
+  </ul>
+
+  <div class="checkout-summary">
+    <div class="summary-details">
+      <h3>Summary</h3>
+      <p>Total Amount: &#8377; <%= calculateTotalAmount(cartItems) %></p>
+      <p>Delivery Charge: &#8377; 50</p>
+      <p>Service Tax: &#8377; 25</p>
+      <hr>
+      <h4>Total to Pay: &#8377; <%= calculateTotalPayable(cartItems) %></h4>
+    </div>
+    <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+  </div>
+</div>
+
+<% function calculateTotalAmount(cartItems) {
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.price;
+  });
+  return total.toLocaleString("en-IN");
+} %>
+
+<% function calculateTotalPayable(cartItems) {
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.price;
+  });
+  // Adding dummy delivery charge and service tax
+  total += 50 + 25;
+  return total.toLocaleString("en-IN");
+} %>

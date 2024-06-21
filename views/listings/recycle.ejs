@@ -1,0 +1,211 @@
+<% layout("/layouts/boilerplate")-%>
+
+<style>
+    .navbar {
+        height: 5rem;
+        background-color: maroon;
+    }
+
+    .fa-shirt {
+        color: white;
+        font-size: 2rem
+    }
+
+    .nav-link {
+        color: white !important;
+    }
+
+    .f-info-links a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .f-info-links a:hover {
+        text-decoration: underline;
+        color: white;
+    }
+
+    .f-info-links,
+    .f-info-socials,
+    .f-info-brand {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .f-info-socials i {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+
+    .f-info {
+        text-align: center;
+        height: 8rem;
+        background-color: #ebebeb;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+    }
+
+    .main {
+        height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .select-city {
+        display: flex;
+        width: 50%;
+    }
+
+    .select-city label {
+        width: 20%;
+    }
+</style>
+
+<body>
+
+    <div class="main">
+        <h2>Recycling and Donation Platform</h2>
+        <p>Join our efforts to promote eco-friendly practices. Find a recycling center near you and donate responsibly. Together, we can make a difference.</p>
+
+        <div class="select-city">
+            <label for="citySelect">Select your city:</label>
+
+            <select id="citySelect" class="form-select" onchange="showCenters()">
+                <option value="">Select a city</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+            </select>
+        </div>
+
+        <div id="centersList" class="mt-4"></div>
+    </div>
+
+   
+
+    <script>
+        const centersData = {
+            "Mumbai": [
+                "Goonj Mumbai Center, Andheri East",
+                "Mumbai Red Cross Society, Fort",
+                "Share At Door Step, Powai",
+                "Ratna Nidhi Charitable Trust, Byculla",
+                "Clothes Box Foundation, Bandra",
+                "Green Yatra, Borivali"
+            ],
+            "Delhi": [
+                "Goonj Delhi Center, Sarita Vihar",
+                "Uday Foundation, Adchini",
+                "Clothes Box Foundation, Connaught Place",
+                "Chintan Environmental Research and Action Group, Patel Nagar",
+                "Share At Door Step, Malviya Nagar",
+                "Project Why, Govindpuri"
+            ],
+            "Bengaluru": [
+                "Goonj Bengaluru Center, JP Nagar",
+                "Share At Door Step, Whitefield",
+                "Peace Child India, Indiranagar",
+                "Samarthanam Trust for the Disabled, HSR Layout",
+                "Snehadeep Trust for the Disabled, Rajajinagar",
+                "Green the Gap, Koramangala"
+            ],
+            "Hyderabad": [
+                "Goonj Hyderabad Center, Ameerpet",
+                "Share At Door Step, Gachibowli",
+                "RagPickers Education and Development Scheme (REDS), Secunderabad",
+                "Society for Education and Environment (SEE), Jubilee Hills",
+                "My Home India, Banjara Hills",
+                "Save The Child Foundation, Kukatpally"
+            ],
+            "Ahmedabad": [
+                "Goonj Ahmedabad Center, Vastrapur",
+                "Share At Door Step, Navrangpura",
+                "Clothes Box Foundation, Bopal",
+                "Blind People’s Association, Vastrapur",
+                "Saath Charitable Trust, Paldi",
+                "Shree Navchetan Andhjan Mandal, Ambawadi"
+            ],
+            "Chennai": [
+                "Goonj Chennai Center, Teynampet",
+                "Share At Door Step, Anna Nagar",
+                "Hope Foundation, T Nagar",
+                "Sevalaya, Mylapore",
+                "Chennai Social Service, Adyar",
+                "Udavum Karangal, Ashok Nagar"
+            ],
+            "Kolkata": [
+                "Goonj Kolkata Center, Tollygunge",
+                "Share At Door Step, Salt Lake",
+                "Calcutta Rescue, Park Street",
+                "Seva Kendra Calcutta, Entally",
+                "Hope Kolkata Foundation, Ballygunge",
+                "Missionaries of Charity, Mother House"
+            ],
+            "Pune": [
+                "Goonj Pune Center, Kothrud",
+                "Share At Door Step, Viman Nagar",
+                "Savitri Jotirao Phule Women’s Association (SJPWA), Camp",
+                "Green Yatra, Kalyani Nagar",
+                "Astitva Pratishthan, Shivajinagar",
+                "Connecting NGO, Koregaon Park"
+            ],
+            "Jaipur": [
+                "Goonj Jaipur Center, C Scheme",
+                "Share At Door Step, Malviya Nagar",
+                "Clothes Box Foundation, Vaishali Nagar",
+                "I-India, Bani Park",
+                "Umang, Mansarovar",
+                "Naya Sawera, Jhotwara"
+            ],
+            "Lucknow": [
+                "Goonj Lucknow Center, Gomti Nagar",
+                "Share At Door Step, Aliganj",
+                "Ehsaas, Indira Nagar",
+                "HELP US, Hazratganj",
+                "Nayi Disha, Mahanagar",
+                "Sarthak Foundation, Alambagh"
+            ]
+        };
+
+        function showCenters() {
+            const city = document.getElementById("citySelect").value;
+            const centersList = document.getElementById("centersList");
+            centersList.innerHTML = ""; // Clear the list
+
+            if (city && centersData[city]) {
+                const centers = centersData[city];
+                const heading = document.createElement("h3");
+                heading.innerText = `Clothes Recycling Centers in ${city}`;
+                centersList.appendChild(heading);
+
+                const list = document.createElement("ul");
+                centers.forEach(center => {
+                    const listItem = document.createElement("li");
+                    listItem.innerText = center;
+                    list.appendChild(listItem);
+                });
+                centersList.appendChild(list);
+            } else if (city) {
+                centersList.innerHTML = `<p>No recycling centers found for ${city}.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,123 @@
+<% layout("/layouts/boilerplate")-%>
+
+<style>
+    .navbar {
+        height: 5rem;
+        background-color: maroon;
+    }
+
+    .fa-shirt {
+        color: white;
+        font-size: 2rem
+    }
+
+    .nav-link {
+        color:white !important;
+    }
+
+    .f-info-links a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .f-info-links a:hover {
+        text-decoration: underline;
+        color: white;
+    }
+
+    .f-info-links,
+    .f-info-socials,
+    .f-info-brand {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .f-info-socials i {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+
+    .f-info {
+        text-align: center;
+        height: 8rem;
+        background-color: #ebebeb;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+
+    }
+
+   
+
+    .main {
+        height: 65vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+
+    .circle-button {
+        width: 350px;
+        height: 350px;
+        border: 2px solid #fe424d;
+        border-radius: 50%;
+        font-size:3rem;
+        color:white;
+        background-color:#a85158;
+    }
+
+    .content{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .long-button{
+        width: 500px;
+        height: 100px;
+        border: 2px solid #fe424d;
+       
+        font-size:1rem;
+        color:white;
+        background-color:#a85158;
+    }
+    
+</style>
+
+
+
+    <div class="main">
+<a href="/recycle">
+    <button class="circle-button">
+        RECYCLE
+    </button>
+</a>
+<a href="/listings/new">
+    <button class="circle-button">
+        RESALE
+        
+    </button>
+</a>
+<a href="/research">
+    <button class="circle-button">
+        RESEARCH
+     </button>
+</a>
+        
+
+        
+    </div>
+  
+    <div class="content">
+        <a href="/listings" >
+            <button class="long-button">
+                BUY&nbsp;&nbsp;&nbsp; CASTOFF &nbsp;&nbsp;&nbsp;CLOTHES
+            </button>
+        </a>
+               
+        
+    </div>

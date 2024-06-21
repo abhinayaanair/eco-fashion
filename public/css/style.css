@@ -1,0 +1,270 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    flex: 1;
+    margin-top: 2rem;
+  }
+  
+  .navbar {
+    height: 5rem;
+    background-color: maroon;
+  }
+  .listing-card img{
+    height:500px !important;
+  }
+  .fa-shirt {
+    color: white;
+    font-size: 2rem;
+  }
+  
+  .fa-cart-shopping {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+  }
+  
+  .nav-link {
+    color: white !important;
+  }
+  
+  .f-info-links a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .f-info-links a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+  
+  .f-info-links,
+  .f-info-socials,
+  .f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+  
+  .f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+  }
+  
+  .cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+  }
+  
+  .item-img {
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem;
+  }
+  
+  .item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .item-details {
+    flex: 1;
+  }
+  
+  .checkout-summary {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .summary-details {
+    width: 70%;
+  }
+  
+  .btn-danger {
+    background-color: #fe424d !important;
+    border: none !important;
+  }
+  
+  .btn-primary {
+    background-color: maroon !important;
+    border: none !important;
+  }
+  
+  @media (max-width: 768px) {
+    .cart-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .item-img {
+      margin-bottom: 1rem;
+    }
+  
+    .checkout-summary {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .summary-details {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+.container{
+    flex:1;
+}
+
+/* Navbar */
+
+
+ .navbar {
+        height: 5rem;
+        background-color: maroon;
+    }
+
+    .fa-shirt {
+        color: white;
+        font-size: 2rem
+    }
+
+    .nav-link {
+        color:white !important;
+    }
+
+    .f-info-links a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .f-info-links a:hover {
+        text-decoration: underline;
+        color: white;
+    }
+
+    .f-info-links,
+    .f-info-socials,
+    .f-info-brand {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .f-info-socials i {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+
+    .f-info {
+        text-align: center;
+        height: 8rem;
+        background-color: #ebebeb;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+
+    }
+
+
+/* Cards */
+.listing-card{
+    border:none !important;
+    margin-bottom: 5rem;
+    
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width:100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-test p{
+    font-weight: 400 !important;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+/* Card Effect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+/* New page */
+.add-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+    width:5rem;
+}
+
+/* Edit page */
+.edit-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+    width:5rem;
+}
+
+/* Show page */
+
+.show-img{
+    height:50vh;
+    object-fit: contain;
+}
+
+.btns{
+    display: flex;
+}
+
+.show-card{
+ 
+    padding-left: 0;
+    padding-right: 0;
+}
+
